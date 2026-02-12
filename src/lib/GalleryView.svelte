@@ -70,7 +70,12 @@
         }
     }
 
-    $: seed, language, likes, loadInitial();
+    $: {
+        seed;
+        language;
+        likes;
+        loadInitial();
+    }
 
     onMount(() => {
         loadInitial();

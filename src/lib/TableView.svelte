@@ -34,7 +34,12 @@
         expandedIndex = expandedIndex === index ? null : index;
     }
 
-    $: seed, language, likes, loadPage(1);
+    $: {
+        seed;
+        language;
+        likes;
+        loadPage(1);
+    }
 </script>
 
 {#if !$isLoading}

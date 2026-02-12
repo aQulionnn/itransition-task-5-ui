@@ -1,18 +1,25 @@
 <script lang="ts">
-    import {_, isLoading} from 'svelte-i18n'
+    import {_, isLoading, locale } from 'svelte-i18n'
     import {onDestroy} from "svelte";
+    import { get } from 'svelte/store'
 
     export let language = 'en-US';
     export let seed = 12345;
     export let likes = 3.5;
     export let viewMode = 'table';
 
-    const url = new URL(window.location.href)
-    const isRu = url.hostname.startsWith('ru.')
+    // const url = new URL(window.location.href)
+    // const isRu = url.hostname.startsWith('ru.')
+    //
+    // url.hostname = isRu
+    //     ? url.hostname.replace(/^ru\./, 'en.')
+    //     : url.hostname.replace(/^en\./, 'ru.')
 
-    url.hostname = isRu
-        ? url.hostname.replace(/^ru\./, 'en.')
-        : url.hostname.replace(/^en\./, 'ru.')
+    function toggleLang() {
+        const next = get(locale) === 'ru-RU' ? 'en-US' : 'ru-RU'
+        localStorage.setItem('lang', next)
+        locale.set(next)
+    }
 
     function generateRandomSeed() {
         seed = Math.floor(Math.random() * 1_000_000_000);
@@ -31,9 +38,9 @@
 
 {#if !$isLoading}
     <header class="toolbar">
-        <a href={url.toString()}>
-            {isRu ? 'English' : 'Русский'}
-        </a>
+        <button on:click={toggleLang} class="toggle-btn">
+            { $locale === 'ru-RU' ? 'English' : 'Русский' }
+        </button>
 
         <div class="seed-group">
             <button on:click={generateRandomSeed} class="random-state-btn" title={$_('toolbar.randomSeed')}>
@@ -97,10 +104,14 @@
         border-bottom: 1px solid rgba(0, 0, 0, .08);
     }
 
-    .toolbar a {
+    .toggle-btn {
         text-decoration: none;
         color: #111;
-        font-size: 18px
+        font-size: 18px;
+        background: none;
+        border: none;
+
+        cursor: pointer;
     }
 
     .seed-group, .likes-group, .view-toggle {

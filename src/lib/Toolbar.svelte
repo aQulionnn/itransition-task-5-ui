@@ -17,8 +17,9 @@
 
     function toggleLang() {
         const next = get(locale) === 'ru-RU' ? 'en-US' : 'ru-RU'
-        localStorage.setItem('lang', next)
+        sessionStorage.setItem('lang', next)
         locale.set(next)
+        location.reload()
     }
 
     function generateRandomSeed() {

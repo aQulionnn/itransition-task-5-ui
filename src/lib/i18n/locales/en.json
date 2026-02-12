@@ -1,0 +1,19 @@
+{
+  "toolbar": {
+    "seed": "Seed",
+    "likes": "Likes",
+    "randomSeed": "Generate random seed"
+  },
+  "viewMode": {
+    "table": "Table",
+    "gallery": "Gallery"
+  },
+  "table": {
+    "index": "#",
+    "title": "Title",
+    "composer": "Composer",
+    "performer": "Performer",
+    "genre": "Genre",
+    "likes": "Likes"
+  }
+}

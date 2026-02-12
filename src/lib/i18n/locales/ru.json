@@ -1,0 +1,19 @@
+{
+  "toolbar": {
+    "seed": "Сид",
+    "likes": "Лайки",
+    "randomSeed": "Случайный сид"
+  },
+  "viewMode": {
+    "table": "Таблица",
+    "gallery": "Галерея"
+  },
+  "table": {
+    "index": "№",
+    "title": "Название",
+    "composer": "Композитор",
+    "performer": "Исполнитель",
+    "genre": "Жанр",
+    "likes": "Лайки"
+  }
+}
